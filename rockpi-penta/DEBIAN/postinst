@@ -77,6 +77,13 @@ case "$model" in
   u-boot-update || true
   checkReboot
   ;;
+*"Radxa ROCK 3Aн"*)
+  mv /boot/dtbo/rk3568-i2c3-m0.dtbo.disabled /boot/dtbo/rk3568-i2c3-m0.dtbo || true
+  mv /boot/dtbo/rk3568-pwm15-m0.dtbo.disabled /boot/dtbo/rk3568-pwm15-m0.dtbo || true
+  cp /usr/bin/rockpi-penta/env/rock_pi_3.env /etc/rockpi-penta.env
+  u-boot-update || true
+  checkReboot
+  ;;
 *"Radxa ROCK 4SE"* | *"ROCK Pi 4"*)
   if [ "$(is_armbian)" = "true" ]; then
     cp /usr/bin/rockpi-penta/overlays/rk3399-pwm1.dtbo /boot/dtb/rockchip/overlay/rockchip-rk3399-pwm1-by-rockpi-penta.dtbo
